@@ -1,4 +1,5 @@
 import React, { useState, axios } from "react";
+import Input from "../Input/Input";
 
 export default function SignUpFormBase(props) {
   const [Username, setUsername] = useState("");
@@ -51,7 +52,7 @@ export default function SignUpFormBase(props) {
         </li>
         <li>
           <span>Password</span>
-          <input
+          <Input
             onChange={(e) => {
               setPassword(e.target.value);
             }}

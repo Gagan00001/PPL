@@ -6,10 +6,10 @@ import "./index.css";
 // import LoginForm from "./LoginForm";
 // import UploadForm from "./UploadForm";
 // import Images from "./Images";
-import Routing from "./Routing";
 import { BrowserRouter } from "react-router-dom";
 import Header from "./components/Header/Header";
 import Footer from "./components/Footer/Footer";
+import Routing from "./components/Routing/Routing";
 // import * as serviceWorker from './serviceWorker';
 
 ReactDOM.render(
