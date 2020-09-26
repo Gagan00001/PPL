@@ -7,9 +7,9 @@ import "./index.css";
 // import UploadForm from "./UploadForm";
 // import Images from "./Images";
 import Routing from "./Routing";
-import Header from "./components/headers/Header.js";
 import { BrowserRouter } from "react-router-dom";
-import Footer from "./components/footers/Footer.js";
+import Header from "./components/Header/Header";
+import Footer from "./components/Footer/Footer";
 // import * as serviceWorker from './serviceWorker';
 
 ReactDOM.render(

@@ -1,14 +1,14 @@
 import React, { useState } from "react";
 import axios from "axios";
-import Images from "../../components/uploadImages/Images";
-import Categories from "../../components/categories/Categories";
-import InviteFriends from "../../components/inviteFriendsbtn/InviteFriendsbtn";
-import Featured from "../../components/featured/Featured";
-import Friends from "../../components/checkbox/Checkbox";
-import ProfileForm from "../../components/profileForm/ProfileForm";
-import ProfilePic from "../../components/profilePic/ProfilePic";
-import TimelineDiv from "../../components/timelineDiv/TimelineDiv";
-import UploadPostbtn from "../../components/uploadPostbtn/UploadPostbtn";
+import Images from "../../components/UploadImages/UploadImages";
+import Categories from "../../components/Categories/Categories";
+import InviteFriends from "../../components/InviteFriendsbtn/InviteFriendsbtn";
+import Featured from "../../components/Featured/Featured";
+import Friends from "../../components/Checkbox/Checkbox";
+import ProfileForm from "../../components/ProfileForm/ProfileForm";
+import ProfilePic from "../../components/ProfilePic/ProfilePic";
+import TimelineDiv from "../../components/TimelineDiv/TimelineDiv";
+import UploadPostbtn from "../../components/UploadPostbtn/UploadPostbtn";
 
 const Timeline = (props) => {
   const [data, setdata] = useState([]);

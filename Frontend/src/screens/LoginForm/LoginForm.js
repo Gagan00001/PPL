@@ -1,9 +1,9 @@
 import React, { Component, useState } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
-import Header from "../../components/headers/Header";
-import Footer from "../../components/footers/Footer";
-import Description from "../../components/WelcomeToPPL/welcomeToPPL";
+import Header from "../../components/Header/Header";
+import Footer from "../../components/Footer/Footer";
+import Description from "../../components/WelcomeToPPL/WelcomeToPPL";
 
 const LoginForm = (props) => {
   const [Email, SetEmail] = useState(" ");
@@ -18,7 +18,7 @@ const LoginForm = (props) => {
         console.log("response from backend", res.data);
         Seterr(res.data.a);
         Setb(res.data.b);
-        props.history.push("/Timeline")
+        props.history.push("/Timeline");
       })
       .catch((err) => {
         console.log("errr", err);

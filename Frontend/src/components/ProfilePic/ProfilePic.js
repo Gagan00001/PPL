@@ -1,5 +1,5 @@
 import React from "react";
-import ProfileForm from "../profileForm/ProfileForm";
+import ProfileForm from "../ProfileForm/ProfileForm";
 const ProfilePic = () => {
   return (
     <div>

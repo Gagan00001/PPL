@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
-import WelcomeToPPL from "../../components/WelcomeToPPL/welcomeToPPL";
-import SignUpFormBase from "./SignUpFormBase";
+import WelcomeToPPL from "../../components/WelcomeToPPL/WelcomeToPPL";
+import SignUpFormBase from "../../components/SignUpForm/SignUpForm";
 const SignUp = (props) => {
   return (
     <>

@@ -1,6 +1,6 @@
 import React from "react";
 
-const welcomeToPPL = () => {
+const WelcomeToPPL = () => {
   return (
     <div>
       <div className="content_lft">
@@ -17,4 +17,4 @@ const welcomeToPPL = () => {
     </div>
   );
 };
-export default welcomeToPPL;
+export default WelcomeToPPL;

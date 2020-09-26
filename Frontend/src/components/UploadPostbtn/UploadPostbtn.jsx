@@ -1,5 +1,5 @@
 import React,{useState,axios} from 'react'
-import UploadForm from "../uploadForm/UploadForm";
+import UploadForm from "../UploadForm/UploadForm";
 export default function UploadPostbtn(props) {
   const [isToggleOn, setisToggleOn] = useState(false);
   const [data, setdata] = useState([]);

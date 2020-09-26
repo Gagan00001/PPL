@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
-import Images from "../uploadImages/Images";
+import Images from "../UploadImages/UploadImages";
 
 export default function UploadForm(props) {
   const [title, setTitle] = useState("");
