@@ -1,8 +1,7 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import axios from "axios";
 import WelcomeToPPL from "../../components/WelcomeToPPL/WelcomeToPPL";
-import SignUpFormBase from "../../components/SignUpForm/SignUpForm";
+import SignUpForm from "../../components/SignUpForm/SignUpForm";
 const SignUp = (props) => {
   return (
     <>
@@ -10,7 +9,7 @@ const SignUp = (props) => {
         <div className="content">
           <div className="content_rgt">
             <div className="register_sec">
-              <SignUpFormBase />
+              <SignUpForm />
               <div className="addtnal_acnt">
                 I already have an account.
                 <Link to="/">Login My Account !</Link>

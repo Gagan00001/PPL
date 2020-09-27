@@ -1,8 +1,6 @@
 import React, { Component, useState } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
-import Header from "../../components/Header/Header";
-import Footer from "../../components/Footer/Footer";
 import Description from "../../components/WelcomeToPPL/WelcomeToPPL";
 import Input from "../../components/Input/Input";
 
