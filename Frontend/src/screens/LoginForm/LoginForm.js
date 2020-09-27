@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import Header from "../../components/Header/Header";
 import Footer from "../../components/Footer/Footer";
 import Description from "../../components/WelcomeToPPL/WelcomeToPPL";
+import Input from "../../components/Input/Input";
 
 const LoginForm = (props) => {
   const [Email, SetEmail] = useState(" ");
@@ -35,7 +36,7 @@ const LoginForm = (props) => {
                 <ul>
                   <li>
                     <span>Email-ID</span>
-                    <input
+                    <Input
                       style={
                         b == 3 ? { color: "red", border: "2px solid red" } : {}
                       }
@@ -53,7 +54,7 @@ const LoginForm = (props) => {
                   </li>
                   <li>
                     <span>Password</span>
-                    <input
+                    <Input
                       style={
                         b == 1 ? { color: "red", border: "2px solid red" } : {}
                       }
@@ -70,11 +71,11 @@ const LoginForm = (props) => {
                     />
                   </li>
                   <li>
-                    <input type="checkbox" />
+                    <Input type="checkbox" />
                     Remember Me
                   </li>
                   <li>
-                    <input type="submit" defaultValue="Log In" />
+                    <Input type="submit" defaultValue="Log In" />
                     <a href>Forgot Password</a>
                   </li>
                 </ul>

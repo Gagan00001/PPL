@@ -9,6 +9,7 @@ export default function Input(props) {
         placeholder={props.placeholder}
         name={props.name}
         onChange={props.onChange}
+        onFocus={props.onFocus}
       />
     </div>
   );

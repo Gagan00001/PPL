@@ -36,7 +36,7 @@ export default function SignUpFormBase(props) {
       <ul>
         <li>
           <span>Username</span>
-          <input
+          <Input
             style={b == 1 ? { border: "2px solid red" } : {}}
             onChange={(e) => {
               setUsername(e.target.value);
@@ -63,7 +63,7 @@ export default function SignUpFormBase(props) {
         </li>
         <li>
           <span>Email</span>
-          <input
+          <Input
             style={b == 2 ? { border: "2px solid red" } : {}}
             onChange={(e) => {
               setEmail(e.target.value);
@@ -79,7 +79,7 @@ export default function SignUpFormBase(props) {
         </li>
         <li>
           <span>First Name</span>
-          <input
+          <Input
             onChange={(e) => {
               setFirstName(e.target.value);
             }}
@@ -90,7 +90,7 @@ export default function SignUpFormBase(props) {
         </li>
         <li>
           <span>Last Name</span>
-          <input
+          <Input
             onChange={(e) => {
               setLastName(e.target.value);
             }}
@@ -100,13 +100,13 @@ export default function SignUpFormBase(props) {
           />
         </li>
         <li>
-          <input type="checkbox" />I agree to Term &amp; Conditions
+          <Input type="checkbox" />I agree to Term &amp; Conditions
         </li>
         <li>
-          <input type="submit" defaultValue="Register" />
+          <Input type="submit" defaultValue="Register" />
         </li>
       </ul>
       <span style={b == 3 ? { color: "green" } : { color: "red" }}>{err}</span>
-    </form>   
+    </form>
   );
 }
