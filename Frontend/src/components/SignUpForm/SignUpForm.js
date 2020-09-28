@@ -6,7 +6,7 @@ const SignUpForm = (props) => {
   const [Email, setEmail] = useState("");
   const [FirstName, setFirstName] = useState("");
   const [LastName, setLastName] = useState("");
-  const [b, Setb] = useState();
+  const [errorCode, SeterrorCode] = useState();
   const [err, Seterr] = useState("");
 
   const submitdata = (event) => {
@@ -23,7 +23,7 @@ const SignUpForm = (props) => {
       .then((res) => {
         console.log("response from backend", res.data);
         Seterr(res.data.a);
-        Setb(res.data.b);
+        SeterrorCode(res.data.errorCode);
       })
       .catch((err) => {
         console.log("errr", err);
@@ -36,12 +36,12 @@ const SignUpForm = (props) => {
         <li>
           <span>Username</span>
           <Input
-            style={b == 1 ? { border: "2px solid red" } : {}}
+            style={errorCode == 1 ? { border: "2px solid red" } : {}}
             onChange={(e) => {
               setUsername(e.target.value);
             }}
             onFocus={() => {
-              Setb(" ");
+              SeterrorCode(" ");
               Seterr(" ");
             }}
             type="text"
@@ -63,12 +63,12 @@ const SignUpForm = (props) => {
         <li>
           <span>Email</span>
           <Input
-            style={b == 2 ? { border: "2px solid red" } : {}}
+            style={errorCode == 2 ? { border: "2px solid red" } : {}}
             onChange={(e) => {
               setEmail(e.target.value);
             }}
             onFocus={() => {
-              Setb(" ");
+              SeterrorCode(" ");
               Seterr(" ");
             }}
             type="text"
@@ -105,7 +105,9 @@ const SignUpForm = (props) => {
           <Input type="submit" defaultValue="Register" />
         </li>
       </ul>
-      <span style={b == 3 ? { color: "green" } : { color: "red" }}>{err}</span>
+      <span style={errorCode == 3 ? { color: "green" } : { color: "red" }}>
+        {err}
+      </span>
     </form>
   );
 };
