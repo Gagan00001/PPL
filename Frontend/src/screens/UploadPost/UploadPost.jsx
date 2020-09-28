@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
-import Images from "../UploadImages/UploadImages";
-const UploadForm = (props) => {
+import Images from "../../components/UploadImages/UploadImages";
+const UploadPost = (props) => {
   const [title, setTitle] = useState("");
   const [category, setCategory] = useState("");
   const [username, setUsername] = useState("");
@@ -23,7 +23,7 @@ const UploadForm = (props) => {
         props.fetchImages();
       })
       .catch((err) => {
-        console.log("UploadForm", err);
+        console.log("uploadPost", err);
       });
   };
 
@@ -87,4 +87,4 @@ const UploadForm = (props) => {
     </div>
   );
 };
-export default UploadForm;
+export default UploadPost;

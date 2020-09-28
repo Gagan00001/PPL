@@ -1,5 +1,5 @@
 import React, { useState, axios } from "react";
-import UploadForm from "../UploadForm/UploadForm";
+import UploadForm from "../../screens/UploadPost/UploadPost";
 const UploadPostbtn = (props) => {
   const [isToggleOn, setisToggleOn] = useState(false);
   const [data, setdata] = useState([]);

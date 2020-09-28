@@ -61,7 +61,7 @@ const LoginForm = (props) => {
               />
             </li>
             <li>
-              <Input type="checkbox" />
+              <input type="checkbox" />
               Remember Me
             </li>
             <li>
