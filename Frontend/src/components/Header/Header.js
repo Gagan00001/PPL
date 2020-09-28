@@ -1,6 +1,6 @@
 import React from "react";
 
-export default function Header() {
+const Header = () => {
   return (
     <div className="header">
       <div className="header_lft">
@@ -48,4 +48,5 @@ export default function Header() {
       </div>
     </div>
   );
-}
+};
+export default Header;

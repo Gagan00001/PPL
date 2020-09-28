@@ -1,7 +1,6 @@
 import React, { useState, axios } from "react";
 import Input from "../Input/Input";
-
-export default function SignUpFormBase(props) {
+const SignUpForm = (props) => {
   const [Username, setUsername] = useState("");
   const [Password, setPassword] = useState("");
   const [Email, setEmail] = useState("");
@@ -109,4 +108,5 @@ export default function SignUpFormBase(props) {
       <span style={b == 3 ? { color: "green" } : { color: "red" }}>{err}</span>
     </form>
   );
-}
+};
+export default SignUpForm;
