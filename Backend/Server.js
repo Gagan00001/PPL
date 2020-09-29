@@ -83,8 +83,6 @@ app.post("/SignUp", (req, res) => {
           console.log("Email Already Taken");
           res.send({ a: "Email Already Taken", b: 2 });
         } else {
-          console.log(result);
-          console.log("Users not exists");
           db.create(req.body, function (err, result) {
             if (err) {
               console.log("error", err);

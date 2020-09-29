@@ -1,6 +1,7 @@
-import React, { useEffect } from "react";
-
+import React, { useEffect, useState } from "react";
 const Images = (props) => {
+  // const[addr,setaddr]= useState("");
+  var asd;
   const { data, fetchImages } = props;
   useEffect(() => {
     fetchImages();
@@ -11,8 +12,9 @@ const Images = (props) => {
       {data.map((path, index) => (
         <div className="contnt_2">
           <div className="div_a">
+            {(asd = "http://localhost:8081/" + path.imageupload)};
             <div className="div_title">
-              "This is the Image of {path.category}"
+              This is the Image of {path.category}"
             </div>
             <div className="btm_rgt">
               <div className="btm_arc">{path.category}</div>
@@ -28,7 +30,10 @@ const Images = (props) => {
               </div>
             </div>
             <div className="div_image">
-              <img src={"images/" + path.imageupload} alt="pet" />
+              <img
+                src={"http://localhost:8081/" + path.imageupload}
+                alt="pet"
+              />
             </div>
             <div className="div_btm">
               <div className="btm_list">
@@ -42,11 +47,11 @@ const Images = (props) => {
                     </a>
                   </li>
                   <li>
-                    <a href="#">
+                    <a href={asd} download>
                       <span className="btn_icon">
                         <img src="images/icon_002.png" alt="share" />
                       </span>
-                      Flag
+                      Download
                     </a>
                   </li>
                   <li>

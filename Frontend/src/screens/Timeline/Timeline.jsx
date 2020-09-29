@@ -1,17 +1,18 @@
 import React, { useState } from "react";
 import axios from "axios";
-import Images from "../../components/UploadImages/UploadImages";
-import Categories from "../../components/Categories/Categories";
-import InviteFriends from "../../components/InviteFriendsbtn/InviteFriendsbtn";
-import Featured from "../../components/Featured/Featured";
-import Friends from "../../components/Checkbox/Checkbox";
-import ProfileForm from "../../components/ProfileForm/ProfileForm";
-import ProfilePic from "../../components/ProfilePic/ProfilePic";
-import TimelineDiv from "../../components/TimelineDiv/TimelineDiv";
-import UploadPostbtn from "../../components/UploadPostbtn/UploadPostbtn";
+import UploadImages from "./Component/UploadImages/UploadImages";
+import Categories from "./Component/Categories/Categories";
+import InviteFriends from "./Component/InviteFriendsbtn/InviteFriendsbtn";
+import Featured from "./Component/Featured/Featured";
+import Friends from "./Component/Checkbox/Checkbox";
+import ProfileForm from "./Component/ProfileForm/ProfileForm";
+import ProfilePic from "./Component/ProfilePic/profilePic";
+import TimelineDiv from "./Component/TimelineDiv/TimelineDiv"
+import UploadPostbtn from "./Component/UploadPostbtn/UploadPostbtn";
 
 const Timeline = (props) => {
   const [data, setdata] = useState([]);
+
   const fetchImages = (e) => {
     console.log("function Calling ");
     axios
@@ -25,12 +26,13 @@ const Timeline = (props) => {
         console.log("error", err);
       });
   };
+
   return (
     <>
       <div className="container">
         <div className="content">
           <div className="content_rgt">
-            <UploadPostbtn />
+            <UploadPostbtn fetchImages={fetchImages}/>
             <InviteFriends />
             <Categories />
             <Featured />
@@ -48,7 +50,7 @@ const Timeline = (props) => {
                 <TimelineDiv />
               </div>
             </div>
-            <Images fetchImages={fetchImages} data={data} />
+            <UploadImages fetchImages={fetchImages} data={data} />
           </div>
         </div>
       </div>

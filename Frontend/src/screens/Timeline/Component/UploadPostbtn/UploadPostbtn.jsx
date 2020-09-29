@@ -1,5 +1,5 @@
 import React, { useState, axios } from "react";
-import UploadForm from "../../screens/UploadPost/UploadPost";
+import UploadForm from "../../../UploadPost/UploadPost";
 const UploadPostbtn = (props) => {
   const [isToggleOn, setisToggleOn] = useState(false);
   const [data, setdata] = useState([]);
@@ -22,6 +22,7 @@ const UploadPostbtn = (props) => {
         </a>
       </div>
       {isToggleOn ? <UploadForm fetchImages={props.fetchImages} /> : ""}
+      
     </div>
   );
 };

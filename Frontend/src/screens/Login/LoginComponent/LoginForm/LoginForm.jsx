@@ -1,22 +1,27 @@
-import React, { useState } from "react";
+import React, { useCallback, useState } from "react";
 import axios from "axios";
-import { Link } from "react-router-dom";
-import Input from "../Input/Input";
+import { Link, withRouter } from "react-router-dom";
+import Input from "../../../../components/Input";
 
 const LoginForm = (props) => {
-  const [Email, SetEmail] = useState(" ");
-  const [Password, SetPassword] = useState(" ");
-  const [errorCode, SeterrorCode] = useState();
-  const [err, Seterr] = useState("");
+  const [Email, setEmail] = useState("");
+  const [Password, setPassword] = useState("");
+  const [errorCode, setErrorCode] = useState();
+  const [err, setErr] = useState();
+  const handleFocus = () => {
+    setErrorCode(" ");
+    setErr(" ");
+  };
+
   const submitData = (event) => {
     event.preventDefault();
     axios
       .post("http://localhost:8081/Login", { Email, Password })
       .then((res) => {
         console.log("response from backend", res.data);
-        Seterr(res.data.a);
-        SeterrorCode(res.data.errorCode);
-        props.history.push("/Timeline");
+        setErr(res.data.a);
+        setErrorCode(res.data.b);
+        if (res.data.a === "Login Successful") props.history.push("/Timeline");
       })
       .catch((err) => {
         console.log("errr", err);
@@ -40,12 +45,9 @@ const LoginForm = (props) => {
                 name="Email"
                 placeholder="Enter your email"
                 onChange={(e) => {
-                  SetEmail(e.target.value);
+                  setEmail(e.target.value);
                 }}
-                onFocus={() => {
-                  SeterrorCode(" ");
-                  Seterr(" ");
-                }}
+                onFocus={handleFocus}
               />
             </li>
             <li>
@@ -59,12 +61,9 @@ const LoginForm = (props) => {
                 type="password"
                 name="Password"
                 placeholder="Enter your password"
-                onFocus={() => {
-                  SeterrorCode(" ");
-                  Seterr(" ");
-                }}
+                onFocus={handleFocus}
                 onChange={(e) => {
-                  SetPassword(e.target.value);
+                  setPassword(e.target.value);
                 }}
               />
             </li>
@@ -85,4 +84,4 @@ const LoginForm = (props) => {
     </div>
   );
 };
-export default LoginForm;
+export default withRouter(LoginForm);

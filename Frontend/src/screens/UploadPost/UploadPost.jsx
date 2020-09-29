@@ -1,7 +1,9 @@
 import React, { useState } from "react";
 import axios from "axios";
-import Images from "../../components/UploadImages/UploadImages";
+import Input from "../../components/Input";
+
 const UploadPost = (props) => {
+  console.log(props);
   const [title, setTitle] = useState("");
   const [category, setCategory] = useState("");
   const [username, setUsername] = useState("");
@@ -20,6 +22,8 @@ const UploadPost = (props) => {
       .then((res) => {
         console.log("updated file", res.data);
         setTitle("");
+        setCategory("");
+        setUsername("");
         props.fetchImages();
       })
       .catch((err) => {
@@ -29,59 +33,67 @@ const UploadPost = (props) => {
 
   return (
     <div>
-      <form onSubmit={onFileUpload} encType="multipart/form-data">
-        <label for="FileTitle" value="FileTitle">
+      <form
+        onSubmit={onFileUpload}
+        className="uploadPostForm"
+        encType="multipart/form-data"
+      >
+        <label for="Title" value="File">
           Title
         </label>
-        <input
+        <Input
           onChange={(e) => {
             setTitle(e.target.value);
           }}
           type="text"
           name="title"
-          id="FileTitle"
           value={title}
-          placeholder="File Title"
+          placeholder="Title"
         />
-        <br />
-        <label for="Category" value="FileTitle">
+        <label for="Category" value="Category">
           Category
         </label>
-        <input
+        <select name="category" onChange={(e) => {
+          setCategory(e.target.value);
+        }}>
+          <option value="CATS">CATS</option>
+          <option value="DOGS">DOGS</option>
+          <option value="BIRDS">BIRDS</option>
+          <option value="RABBIT">RABBIT</option>
+          <option value="OTHERS">OTHERS</option>
+        </select>
+        {/* <Input
           onChange={(e) => {
             setCategory(e.target.value);
           }}
           type="text"
           name="category"
-          id="category"
+          value={category}
           placeholder="Category"
-        />
-        <br />
+        /> */}
         <label for="Username" value="Username">
           Username
         </label>
-        <input
+        <Input
           onChange={(e) => {
             setUsername(e.target.value);
           }}
+          value={username}
           type="text"
           name="username"
-          id="Username"
           placeholder="Username"
         />
-        <br />
-        <label for="Submit" value="Submit"></label>
         <label for="myfile">Select a file:</label>
-        <input
+        <Input
           type="file"
-          id="myfile"
           name="myfile"
           onChange={(event) => {
             setSelectedFile(event.target.files[0]);
           }}
         />
+        <label for="Submit" value="Submit"></label>
+        <Input type="Submit" name="Submit" value="Submit" />
         <br />
-        <input type="Submit" name="Submit" />
         <br />
       </form>
     </div>

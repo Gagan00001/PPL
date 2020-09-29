@@ -1,6 +1,5 @@
 import React from "react";
-import ProfileForm from "../ProfileForm/ProfileForm";
-const ProfilePic = () => {
+const profilePic = () => {
   return (
     <div>
       <div className="profile_pic">
@@ -12,4 +11,4 @@ const ProfilePic = () => {
     </div>
   );
 };
-export default ProfilePic;
+export default profilePic;

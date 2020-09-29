@@ -1,5 +1,7 @@
-import React, { useState, axios } from "react";
-import Input from "../Input/Input";
+import axios from "axios";
+import React, { useState } from "react";
+import Input from "../../../../components/Input";
+
 const SignUpForm = (props) => {
   const [Username, setUsername] = useState("");
   const [Password, setPassword] = useState("");
@@ -23,7 +25,7 @@ const SignUpForm = (props) => {
       .then((res) => {
         console.log("response from backend", res.data);
         Seterr(res.data.a);
-        SeterrorCode(res.data.errorCode);
+        SeterrorCode(res.data.b);
       })
       .catch((err) => {
         console.log("errr", err);

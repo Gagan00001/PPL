@@ -1,9 +1,9 @@
 import React, { Component, useState } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
-import Input from "../../components/Input/Input";
+import Input from "../../components/Input";
 import WelcomeToPPL from "../../components/WelcomeToPPL/WelcomeToPPL";
-import LoginForm from "../../components/LoginForm/LoginForm";
+import LoginForm from "./LoginComponent/LoginForm/LoginForm";
 
 const Login = (props) => {
   return (
