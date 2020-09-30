@@ -1,8 +1,7 @@
-import React, { useState, axios } from "react";
+import React, { useState } from "react";
 import UploadForm from "../../../UploadPost/UploadPost";
 const UploadPostbtn = (props) => {
   const [isToggleOn, setisToggleOn] = useState(false);
-  const [data, setdata] = useState([]);
   return (
     <div>
       <div className="rght_btn">

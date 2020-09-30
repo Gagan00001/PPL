@@ -1,9 +1,11 @@
 import React, { useState } from "react";
 import axios from "axios";
 import Input from "../../components/Input";
+import Loader from "../../components/Loader/Loader";
 
 const UploadPost = (props) => {
   console.log(props);
+  const [isLoading, setIsLoading] = useState(false);
   const [title, setTitle] = useState("");
   const [category, setCategory] = useState("");
   const [username, setUsername] = useState("");
@@ -11,28 +13,33 @@ const UploadPost = (props) => {
 
   const onFileUpload = (event) => {
     event.preventDefault();
+    setIsLoading(true);
     const formData = new FormData();
     formData.append("myfile", selectedFile);
     formData.append("title", title);
     formData.append("category", category);
     formData.append("username", username);
     console.log(selectedFile);
-    axios
-      .post("http://localhost:8081/uploadPost", formData)
-      .then((res) => {
-        console.log("updated file", res.data);
-        setTitle("");
-        setCategory("");
-        setUsername("");
-        props.fetchImages();
-      })
-      .catch((err) => {
-        console.log("uploadPost", err);
-      });
+    setTimeout(() => {
+      axios
+        .post("http://localhost:8081/uploadPost", formData)
+        .then((res) => {
+          console.log("updated file", res.data);
+          setTitle("");
+          setCategory("");
+          setUsername("");
+          setIsLoading(false);
+          props.fetchImages();
+        })
+        .catch((err) => {
+          console.log("uploadPost", err);
+        });
+    }, 2000);
   };
 
   return (
     <div>
+      {isLoading && <Loader isLoading={isLoading} />}
       <form
         onSubmit={onFileUpload}
         className="uploadPostForm"
@@ -53,9 +60,12 @@ const UploadPost = (props) => {
         <label for="Category" value="Category">
           Category
         </label>
-        <select name="category" onChange={(e) => {
-          setCategory(e.target.value);
-        }}>
+        <select
+          name="category"
+          onChange={(e) => {
+            setCategory(e.target.value);
+          }}
+        >
           <option value="CATS">CATS</option>
           <option value="DOGS">DOGS</option>
           <option value="BIRDS">BIRDS</option>

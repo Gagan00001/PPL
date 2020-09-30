@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 const Images = (props) => {
   // const[addr,setaddr]= useState("");
   var asd;
@@ -12,9 +12,9 @@ const Images = (props) => {
       {data.map((path, index) => (
         <div className="contnt_2">
           <div className="div_a">
-            {(asd = "http://localhost:8081/" + path.imageupload)};
+            {/* {(asd = "http://localhost:8081/" + path.imageupload)}; */}
             <div className="div_title">
-              This is the Image of {path.category}"
+              This is the Image of {path.category}
             </div>
             <div className="btm_rgt">
               <div className="btm_arc">{path.category}</div>

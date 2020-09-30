@@ -3,7 +3,7 @@ const profilePic = () => {
   return (
     <div>
       <div className="profile_pic">
-        <img src="images/timeline_img1.png" />
+        <img src="images/timeline_img1.png" alt="timeline-img" />
         <div className="profile_text">
           <a href="#">Change Profile Pic</a>
         </div>

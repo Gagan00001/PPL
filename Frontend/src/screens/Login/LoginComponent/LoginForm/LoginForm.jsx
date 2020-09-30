@@ -1,9 +1,11 @@
-import React, { useCallback, useState } from "react";
+import React, { useState } from "react";
 import axios from "axios";
-import { Link, withRouter } from "react-router-dom";
+import { withRouter } from "react-router-dom";
 import Input from "../../../../components/Input";
+import Loader from "../../../../components/Loader/Loader";
 
 const LoginForm = (props) => {
+  const [isLoading, setIsLoading] = useState(false);
   const [Email, setEmail] = useState("");
   const [Password, setPassword] = useState("");
   const [errorCode, setErrorCode] = useState();
@@ -12,23 +14,30 @@ const LoginForm = (props) => {
     setErrorCode(" ");
     setErr(" ");
   };
+  // isLoading=false;
 
   const submitData = (event) => {
     event.preventDefault();
-    axios
-      .post("http://localhost:8081/Login", { Email, Password })
-      .then((res) => {
-        console.log("response from backend", res.data);
-        setErr(res.data.a);
-        setErrorCode(res.data.b);
-        if (res.data.a === "Login Successful") props.history.push("/Timeline");
-      })
-      .catch((err) => {
-        console.log("errr", err);
-      });
+    setIsLoading(true);
+    setTimeout(() => {
+      axios
+        .post("http://localhost:8081/Login", { Email, Password })
+        .then((res) => {
+          console.log("response from backend", res.data);
+          setErr(res.data.a);
+          setErrorCode(res.data.b);
+          setIsLoading(false);
+          if (res.data.a === "Login Successful")
+            props.history.push("/Timeline");
+        })
+        .catch((err) => {
+          console.log("errr", err);
+        });
+    }, 2000);
   };
   return (
     <div>
+      {isLoading && <Loader isLoading={isLoading} />}
       <div className="login_sec">
         <form onSubmit={submitData}>
           <h1>Log In</h1>

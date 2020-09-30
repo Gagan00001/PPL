@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
 import WelcomeToPPL from "../../components/WelcomeToPPL/WelcomeToPPL";
 import SignUpForm from "./SignUpComponent/SignUpForm/SignUpForm";
