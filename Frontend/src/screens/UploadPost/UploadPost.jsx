@@ -66,7 +66,9 @@ const UploadPost = (props) => {
             setCategory(e.target.value);
           }}
         >
-          <option value="CATS">CATS</option>
+          <option value="CATS" selected>
+            CATS
+          </option>
           <option value="DOGS">DOGS</option>
           <option value="BIRDS">BIRDS</option>
           <option value="RABBIT">RABBIT</option>

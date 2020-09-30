@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import UploadForm from "../../../UploadPost/UploadPost";
+import UploadPost from "../../../UploadPost/UploadPost";
 const UploadPostbtn = (props) => {
   const [isToggleOn, setisToggleOn] = useState(false);
   return (
@@ -20,7 +20,7 @@ const UploadPostbtn = (props) => {
           Upload Post
         </a>
       </div>
-      {isToggleOn ? <UploadForm fetchImages={props.fetchImages} /> : ""}
+      {isToggleOn ? <UploadPost fetchImages={props.fetchImages} /> : ""}
       
     </div>
   );
