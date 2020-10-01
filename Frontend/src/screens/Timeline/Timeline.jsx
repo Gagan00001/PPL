@@ -7,8 +7,9 @@ import Featured from "./Component/Featured/Featured";
 import Friends from "./Component/Checkbox/Checkbox";
 import ProfileForm from "./Component/ProfileForm/ProfileForm";
 import ProfilePic from "./Component/ProfilePic/profilePic";
-import TimelineDiv from "./Component/TimelineDiv/TimelineDiv"
+import TimelineDiv from "./Component/TimelineDiv/TimelineDiv";
 import UploadPostbtn from "./Component/UploadPostbtn/UploadPostbtn";
+import { connect } from "redux";
 
 const Timeline = (props) => {
   const [data, setdata] = useState([]);
@@ -21,6 +22,7 @@ const Timeline = (props) => {
         setdata(res.data.reverse());
         console.log("response", res);
         console.log("data", data);
+        props.post(data);
       })
       .catch((err) => {
         console.log("error", err);
@@ -32,7 +34,7 @@ const Timeline = (props) => {
       <div className="container">
         <div className="content">
           <div className="content_rgt">
-            <UploadPostbtn fetchImages={fetchImages}/>
+            <UploadPostbtn fetchImages={fetchImages} />
             <InviteFriends />
             <Categories />
             <Featured />
@@ -57,4 +59,15 @@ const Timeline = (props) => {
     </>
   );
 };
+
+// const mapStateToProps = (state) => {
+//   return {};
+// };
+
+// const mapDispatchToProps = (dispatch, ownProps) => {
+//   return {
+//     abc: () => dispatch(post(data))
+//   }
+// }
+
 export default Timeline;

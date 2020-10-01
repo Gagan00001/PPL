@@ -26,8 +26,9 @@ const UploadPost = (props) => {
         .then((res) => {
           console.log("updated file", res.data);
           setTitle("");
-          setCategory("");
+          setCategory("Choose ");
           setUsername("");
+          document.getElementById("myfile").value = "";
           setIsLoading(false);
           props.fetchImages();
         })
@@ -66,9 +67,10 @@ const UploadPost = (props) => {
             setCategory(e.target.value);
           }}
         >
-          <option value="CATS" selected>
-            CATS
+          <option value="Choose Category" selected hidden>
+            Choose Category
           </option>
+          <option value="CATS">CATS</option>
           <option value="DOGS">DOGS</option>
           <option value="BIRDS">BIRDS</option>
           <option value="RABBIT">RABBIT</option>
@@ -99,6 +101,7 @@ const UploadPost = (props) => {
         <Input
           type="file"
           name="myfile"
+          id="myfile"
           onChange={(event) => {
             setSelectedFile(event.target.files[0]);
           }}

@@ -2,6 +2,7 @@ import React from "react";
 
 const Input = ({
   type,
+  id,
   style,
   placeholder,
   name,
@@ -14,6 +15,7 @@ const Input = ({
   return (
     <>
       <input
+        id={id}
         type={type}
         style={style}
         placeholder={placeholder}
