@@ -4,7 +4,7 @@ import { withRouter } from "react-router-dom";
 import Input from "../../../../components/Input";
 import Loader from "../../../../components/Loader/Loader";
 
-const LoginForm = (props) => {
+const LoginForm = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [Email, setEmail] = useState("");
   const [Password, setPassword] = useState("");

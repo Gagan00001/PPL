@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import Input from "../../../../components/Input";
 import Loader from "../../../../components/Loader/Loader";
 
-const SignUpForm = (props) => {
+const SignUpForm = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [Username, setUsername] = useState("");
   const [Password, setPassword] = useState("");
@@ -18,25 +18,25 @@ const SignUpForm = (props) => {
     setIsLoading(true);
 
     // console.log("Hello");
-   setTimeout(()=>{
-    axios
-    .post("http://localhost:8081/SignUp", {
-      Username,
-      Password,
-      Email,
-      FirstName,
-      LastName,
-    })
-    .then((res) => {
-      console.log("response from backend", res.data);
-      Seterr(res.data.a);
-      SeterrorCode(res.data.b);
-      setIsLoading(false);
-    })
-    .catch((err) => {
-      console.log("errr", err);
-    });
-   },2000)
+    setTimeout(() => {
+      axios
+        .post("http://localhost:8081/SignUp", {
+          Username,
+          Password,
+          Email,
+          FirstName,
+          LastName,
+        })
+        .then((res) => {
+          console.log("response from backend", res.data);
+          Seterr(res.data.a);
+          SeterrorCode(res.data.b);
+          setIsLoading(false);
+        })
+        .catch((err) => {
+          console.log("errr", err);
+        });
+    }, 2000);
   };
   return (
     <>

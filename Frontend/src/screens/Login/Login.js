@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import WelcomeToPPL from "../../components/WelcomeToPPL/WelcomeToPPL";
 import LoginForm from "./LoginComponent/LoginForm/LoginForm";
 
-const Login = (props) => {
+const Login = () => {
   return (
     <div>
       <div className="container">
