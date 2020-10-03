@@ -107,7 +107,16 @@ app.post("/Login", (req, res) => {
         res.send({ a: "Wrong Password", b: 1 });
       } else {
         console.log("Correct Password");
-        res.send({ a: "Login Successful", b: 2 });
+        res.send(
+          {
+            Username: result[0].Username,
+            FirstName: result[0].FirstName,
+            LastName: result[0].LastName,
+            Email: result[0].Email,
+            a: "Login Successful",
+            b: 2,
+          }
+        );
       }
     } else {
       console.log("Email-Id Not Registered");

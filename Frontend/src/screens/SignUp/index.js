@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import WelcomeToPPL from "../../components/WelcomeToPPL/WelcomeToPPL";
-import SignUpForm from "./SignUpComponent/SignUpForm/SignUpForm";
+import WelcomeToPPL from "../../components/WelcomeToPPL";
+import SignUpForm from "./component/SignUpForm/SignUpForm";
 const SignUp = () => {
   return (
     <>

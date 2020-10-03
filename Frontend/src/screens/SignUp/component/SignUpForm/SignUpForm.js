@@ -1,7 +1,7 @@
 import axios from "axios";
 import React, { useState } from "react";
 import Input from "../../../../components/Input";
-import Loader from "../../../../components/Loader/Loader";
+import Loader from "../../../../components/Loader";
 
 const SignUpForm = () => {
   const [isLoading, setIsLoading] = useState(false);
@@ -28,7 +28,7 @@ const SignUpForm = () => {
           LastName,
         })
         .then((res) => {
-          console.log("response from backend", res.data);
+          console.log("response from backend", res);
           Seterr(res.data.a);
           SeterrorCode(res.data.b);
           setIsLoading(false);
@@ -123,4 +123,12 @@ const SignUpForm = () => {
     </>
   );
 };
+
+function mapStateToProps(state, ownProps){
+
+}
+
+
+
+
 export default SignUpForm;

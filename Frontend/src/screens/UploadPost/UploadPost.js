@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 import Input from "../../components/Input";
-import Loader from "../../components/Loader/Loader";
+import Loader from "../../components/Loader";
 
 const UploadPost = (props) => {
   console.log(props);

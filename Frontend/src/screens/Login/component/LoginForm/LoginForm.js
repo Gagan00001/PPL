@@ -2,9 +2,14 @@ import React, { useState } from "react";
 import axios from "axios";
 import { withRouter } from "react-router-dom";
 import Input from "../../../../components/Input";
-import Loader from "../../../../components/Loader/Loader";
+import Loader from "../../../../components/Loader";
+import { login } from "../../../../Redux/Actions";
+import Timeline from "../../../Timeline";
+import { connect } from "react-redux";
+import Login from "../..";
 
-const LoginForm = () => {
+const LoginForm = (props) => {
+  console.log("LoginForm -> props", props);
   const [isLoading, setIsLoading] = useState(false);
   const [Email, setEmail] = useState("");
   const [Password, setPassword] = useState("");
@@ -24,6 +29,7 @@ const LoginForm = () => {
         .post("http://localhost:8081/Login", { Email, Password })
         .then((res) => {
           console.log("response from backend", res.data);
+          props.saveUserData(res.data);
           setErr(res.data.a);
           setErrorCode(res.data.b);
           setIsLoading(false);
@@ -93,4 +99,17 @@ const LoginForm = () => {
     </div>
   );
 };
-export default withRouter(LoginForm);
+const mapStatetoProps = (state) => {
+  console.log("new state", state);
+  return {};
+};
+const mapDispatchtoProps = (dispatch) => {
+  return {
+    saveUserData: (data) => dispatch(login(data)),
+  };
+};
+
+export default connect(
+  mapStatetoProps,
+  mapDispatchtoProps
+)(withRouter(LoginForm));

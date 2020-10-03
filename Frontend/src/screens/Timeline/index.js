@@ -22,7 +22,7 @@ const Timeline = (props) => {
         setdata(res.data.reverse());
         console.log("response", res);
         console.log("data", data);
-        props.post(data);
+        // props.post(data);
       })
       .catch((err) => {
         console.log("error", err);
