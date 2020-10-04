@@ -98,10 +98,10 @@ const LoginForm = (props) => {
     </div>
   );
 };
-const mapStatetoProps = (state) => {
-  console.log("new state", state);
-  return {};
-};
+// const mapStatetoProps = (state) => {
+//   console.log("new state", state);
+//   return {};
+// };
 // const mapDispatchtoProps = (dispatch) => {
 //   return {
 //     saveUserData: (data) => dispatch(login(data)),

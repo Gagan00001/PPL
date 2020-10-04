@@ -34,7 +34,8 @@ export const dataReducer = (state = currentData, action) => {
 
   switch (action.type) {
     case "SET_CURRENT_DATA":
-      return { ...state, users: action.data };
+      console.log({...state, user: action.data})
+      return { ...state, user: action.data };
   }
   return state;
 };
