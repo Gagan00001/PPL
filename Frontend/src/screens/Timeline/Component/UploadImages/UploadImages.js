@@ -1,4 +1,5 @@
 import React, { useEffect } from "react";
+
 const Images = (props) => {
   // const[addr,setaddr]= useState("");
   var asd;
@@ -6,7 +7,7 @@ const Images = (props) => {
   useEffect(() => {
     fetchImages();
   }, []);
-  console.log("Use-Effect-Running");
+
   return (
     <>
       {data.map((path, index) => (

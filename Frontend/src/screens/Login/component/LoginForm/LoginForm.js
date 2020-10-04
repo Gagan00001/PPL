@@ -3,13 +3,15 @@ import axios from "axios";
 import { withRouter } from "react-router-dom";
 import Input from "../../../../components/Input";
 import Loader from "../../../../components/Loader";
-import { login } from "../../../../Redux/Actions";
+import { setCurrentData } from "../../../../Redux/Actions";
 import Timeline from "../../../Timeline";
-import { connect } from "react-redux";
+import { connect, useDispatch } from "react-redux";
 import Login from "../..";
 
 const LoginForm = (props) => {
   console.log("LoginForm -> props", props);
+  const dispatch = useDispatch()
+
   const [isLoading, setIsLoading] = useState(false);
   const [Email, setEmail] = useState("");
   const [Password, setPassword] = useState("");
@@ -19,27 +21,24 @@ const LoginForm = (props) => {
     setErrorCode(" ");
     setErr(" ");
   };
-  // isLoading=false;
 
   const submitData = (event) => {
     event.preventDefault();
     setIsLoading(true);
-    setTimeout(() => {
       axios
         .post("http://localhost:8081/Login", { Email, Password })
         .then((res) => {
           console.log("response from backend", res.data);
-          props.saveUserData(res.data);
-          setErr(res.data.a);
-          setErrorCode(res.data.b);
+          dispatch(setCurrentData(res.data))
           setIsLoading(false);
           if (res.data.a === "Login Successful")
-            props.history.push("/Timeline");
+          props.history.push("/Timeline");
         })
         .catch((err) => {
-          console.log("errr", err);
+          // setErr(res.data.a);
+          // setErrorCode(res.data.b);
+          console.log("errr",err);
         });
-    }, 2000);
   };
   return (
     <div>
@@ -103,13 +102,10 @@ const mapStatetoProps = (state) => {
   console.log("new state", state);
   return {};
 };
-const mapDispatchtoProps = (dispatch) => {
-  return {
-    saveUserData: (data) => dispatch(login(data)),
-  };
-};
+// const mapDispatchtoProps = (dispatch) => {
+//   return {
+//     saveUserData: (data) => dispatch(login(data)),
+//   };
+// };
 
-export default connect(
-  mapStatetoProps,
-  mapDispatchtoProps
-)(withRouter(LoginForm));
+export default withRouter(LoginForm)

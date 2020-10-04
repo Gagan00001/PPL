@@ -1,6 +1,9 @@
 import React from "react";
+import { connect, useSelector } from "react-redux";
 
-const ProfileForm = () => {
+const ProfileForm = (props) => {
+  const user = useSelector((state) => state?.user);
+  const { FirstName = "....", LastName = "..." } = user || {};
   return (
     <div>
       <div className="edit_div">
@@ -12,7 +15,14 @@ const ProfileForm = () => {
         <ul>
           <li>
             <div className="div_name1">Name :</div>
-            <div className="div_name2">Stefiney Gibbs</div>
+            <div className="div_name2">
+              {" "}
+              {FirstName.charAt(0).toUpperCase() +
+                FirstName.slice(1) +
+                " " +
+                LastName.charAt(0).toUpperCase() +
+                LastName.slice(1)}
+            </div>
           </li>
           <li>
             <div className="div_name1">Sex :</div>
@@ -31,4 +41,5 @@ const ProfileForm = () => {
     </div>
   );
 };
+
 export default ProfileForm;

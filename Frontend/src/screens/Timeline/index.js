@@ -13,21 +13,25 @@ import { connect } from "redux";
 
 const Timeline = (props) => {
   const [data, setdata] = useState([]);
-
   const fetchImages = (e) => {
-    console.log("function Calling ");
     axios
       .get("http://localhost:8081/FetchImage", {})
       .then((res) => {
         setdata(res.data.reverse());
         console.log("response", res);
-        console.log("data", data);
         // props.post(data);
       })
       .catch((err) => {
         console.log("error", err);
       });
   };
+
+  // useEffect(() => {
+  //   effect
+  //   return () => {
+  //     cleanup
+  //   }
+  // }, [input])
 
   return (
     <>
