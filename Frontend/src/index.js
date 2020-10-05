@@ -10,7 +10,6 @@ import { Provider } from "react-redux";
 ReactDOM.render(
   <Provider store={Store}>
     <BrowserRouter>
-      <Header />
       <Routing />
       <Footer />
     </BrowserRouter>

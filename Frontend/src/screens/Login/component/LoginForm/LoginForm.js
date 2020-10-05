@@ -3,42 +3,54 @@ import axios from "axios";
 import { withRouter } from "react-router-dom";
 import Input from "../../../../components/Input";
 import Loader from "../../../../components/Loader";
-import { setCurrentData } from "../../../../Redux/Actions";
-import Timeline from "../../../Timeline";
-import { connect, useDispatch } from "react-redux";
-import Login from "../..";
+import {
+  setCurrentData,
+  setError,
+  setLoading,
+}from "../../../../Redux/Actions";
+import { useDispatch, useSelector } from "react-redux";
 
 const LoginForm = (props) => {
-  console.log("LoginForm -> props", props);
-  const dispatch = useDispatch()
-
-  const [isLoading, setIsLoading] = useState(false);
+  const err=useSelector((state)=>state.errorReducer.error)
+  // console.log(">>>>",err);
+  const dispatch = useDispatch();
+  const [isLoading, setIsLoading] = useState(false);  
   const [Email, setEmail] = useState("");
   const [Password, setPassword] = useState("");
-  const [errorCode, setErrorCode] = useState();
-  const [err, setErr] = useState();
-  const handleFocus = () => {
-    setErrorCode(" ");
-    setErr(" ");
+ const handleFocus = () => {
+    // setErr(" ");
   };
 
   const submitData = (event) => {
     event.preventDefault();
-    setIsLoading(true);
-      axios
-        .post("http://localhost:8081/Login", { Email, Password })
-        .then((res) => {
-          console.log("response from backend", res.data);
-          dispatch(setCurrentData(res.data))
-          setIsLoading(false);
-          if (res.data.a === "Login Successful")
+    axios
+      .post("http://localhost:8081/Login", { Email, Password })
+      .then((res) => {
+        // console.log("response from backend", res.data);
+        if (
+          res.data.msg === "Wrong Password" ||
+          res.data.msg === "Email-Id Not Registered"
+        ) {
+          dispatch(setError(res.data.msg));
+          dispatch(setLoading(false));
+        } else {
+          const resData = {
+            _id: res.data._id,
+            Username: res.data.Username,
+            FirstName: res.data.FirstName,
+            LastName: res.data.LastName,
+            Email: res.data.Email,
+          };
+          localStorage.setItem("user", JSON.stringify(resData));
+          dispatch(setCurrentData(resData));
+          // dispatch(setError(res.data.msg));
+          dispatch(setLoading(true));
           props.history.push("/Timeline");
-        })
-        .catch((err) => {
-          // setErr(res.data.a);
-          // setErrorCode(res.data.b);
-          console.log("errr",err);
-        });
+        }
+      })
+      .catch((err) => {
+        console.log("errr", err);
+      });
   };
   return (
     <div>
@@ -51,7 +63,7 @@ const LoginForm = (props) => {
               <span>Email-ID</span>
               <Input
                 style={
-                  errorCode == 3
+                  err === "Email-Id Not Registered"
                     ? { color: "red", border: "2px solid red" }
                     : {}
                 }
@@ -68,7 +80,7 @@ const LoginForm = (props) => {
               <span>Password</span>
               <Input
                 style={
-                  errorCode == 1
+                  err === "Wrong Password"
                     ? { color: "red", border: "2px solid red" }
                     : {}
                 }
@@ -90,7 +102,11 @@ const LoginForm = (props) => {
               <a href>Forgot Password</a>
             </li>
           </ul>
-          <span style={errorCode == 2 ? { color: "green" } : { color: "red" }}>
+          <span
+            style={
+              err === "Login Successful" ? { color: "green" } : { color: "red" }
+            }
+          >
             {err}
           </span>
         </form>
@@ -98,14 +114,5 @@ const LoginForm = (props) => {
     </div>
   );
 };
-// const mapStatetoProps = (state) => {
-//   console.log("new state", state);
-//   return {};
-// };
-// const mapDispatchtoProps = (dispatch) => {
-//   return {
-//     saveUserData: (data) => dispatch(login(data)),
-//   };
-// };
 
-export default withRouter(LoginForm)
+export default withRouter(LoginForm);

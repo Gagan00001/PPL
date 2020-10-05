@@ -1,8 +1,9 @@
 import React, { useEffect } from "react";
-
+import PropTypes from "prop-types";
+import { useSelector } from "react-redux";
 const Images = (props) => {
-  // const[addr,setaddr]= useState("");
-  var asd;
+  const user = useSelector((state) => state.dataReducer.user);
+  const {Username}=user||{};
   const { data, fetchImages } = props;
   useEffect(() => {
     fetchImages();
@@ -13,9 +14,8 @@ const Images = (props) => {
       {data.map((path, index) => (
         <div className="contnt_2">
           <div className="div_a">
-            {/* {(asd = "http://localhost:8081/" + path.imageupload)}; */}
             <div className="div_title">
-              This is the Image of {path.category}
+             {path.caption}
             </div>
             <div className="btm_rgt">
               <div className="btm_arc">{path.category}</div>
@@ -48,7 +48,7 @@ const Images = (props) => {
                     </a>
                   </li>
                   <li>
-                    <a href={asd} download>
+                    <a href="#" download>
                       <span className="btn_icon">
                         <img src="images/icon_002.png" alt="share" />
                       </span>
@@ -80,4 +80,11 @@ const Images = (props) => {
     </>
   );
 };
+Images.defaultProps={
+  data:[],
+}
+Images.propTypes={
+  data:PropTypes.array,
+  fetchImages:PropTypes.func,
+}
 export default Images;

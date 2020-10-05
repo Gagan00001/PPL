@@ -124,11 +124,5 @@ const SignUpForm = () => {
   );
 };
 
-function mapStateToProps(state, ownProps){
-
-}
-
-
-
 
 export default SignUpForm;

@@ -1,5 +1,6 @@
 import React from "react";
 import { connect, useSelector } from "react-redux";
+import PropTypes from "prop-types";
 
 const ProfileForm = (props) => {
   const users = useSelector((state) => state.dataReducer.user);
@@ -25,7 +26,7 @@ const ProfileForm = (props) => {
           </li>
           <li>
             <div className="div_name1">Sex :</div>
-            <div className="div_name2">Female</div>
+            <div className="div_name2">Male</div>
           </li>
           <li>
             <div className="div_name1">Description :</div>
@@ -39,5 +40,13 @@ const ProfileForm = (props) => {
       </div>
     </div>
   );
+};
+ProfileForm.defaultProps = {
+  FirstName: "",
+  LastName: "",
+};
+ProfileForm.propTypes = {
+  FirstName: PropTypes.string,
+  LastName: PropTypes.string,
 };
 export default ProfileForm;

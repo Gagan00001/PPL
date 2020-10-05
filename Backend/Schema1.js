@@ -21,7 +21,7 @@ const d = new Date();
 var mon = monthNames[d.getMonth()];
 var ampm = date.getHours() >= 12 ? "pm" : "am";
 var userSchema = mongoose.Schema({
-  title: { type: String },
+  caption: { type: String },
   category: { type: String },
   username: { type: String },
   date: {

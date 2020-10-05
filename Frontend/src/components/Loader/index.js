@@ -1,7 +1,9 @@
 import React from "react";
+import PropTypes from "prop-types";
+import { useSelector } from "react-redux";
 
 const Loader = (props) => {
-  const {isLoading} = props;
+  const isLoading = useSelector((state) => state.loadingReducer.user);
   console.log("Loader",isLoading);
   return (
     <div className="pageloader">
@@ -13,4 +15,11 @@ const Loader = (props) => {
     </div>
   );
 };
+Loader.defaultProps={
+  isLoading:false,
+}
+Loader.propTypes={
+  isLoading:PropTypes.bool,
+}
+
 export default Loader;

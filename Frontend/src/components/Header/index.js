@@ -1,6 +1,9 @@
-import React from "react";
+import React, { useState } from "react";
+import PropTypes from "prop-types";
+import { withRouter, Link } from "react-router-dom";
 
-const Header = () => {
+const Header = (props) => {
+  const { logout } = props;
   return (
     <div className="header">
       <div className="header_lft">
@@ -43,10 +46,27 @@ const Header = () => {
           <div className="image_div">
             <img src="images/pic.png" />
           </div>
-          <div className="info_div1">Me</div>
+          <div className="info_div1">
+            {logout ? (
+              <Link to="/">
+                <input className="logout" type="submit" value="Logout" />
+              </Link>
+            ) : (
+              "Me"
+            )}
+          </div>
         </div>
       </div>
     </div>
   );
 };
-export default Header;
+
+Header.defaultProps = {
+  logout: false,
+};
+
+Header.propTypes = {
+  logout: PropTypes.bool,
+};
+
+export default withRouter(Header);

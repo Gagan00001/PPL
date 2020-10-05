@@ -46,6 +46,7 @@ app.post("/uploadPost", upload.single("myfile"), function (req, res) {
   console.log("req.file", req.file);
   console.log("body-data", req.body);
   let data1 = req.body;
+  // data1.Username = localStorage.getItem("user").Username;
   data1.imageupload = req.file.filename;
 
   db1.create(data1, function (err, result) {
@@ -104,23 +105,21 @@ app.post("/Login", (req, res) => {
     if (result.length > 0) {
       if (result[0].Password != pass) {
         console.log("Wrong Password");
-        res.send({ a: "Wrong Password", b: 1 });
+        res.send({ msg: "Wrong Password" });
       } else {
         console.log("Correct Password");
-        res.send(
-          {
-            Username: result[0].Username,
-            FirstName: result[0].FirstName,
-            LastName: result[0].LastName,
-            Email: result[0].Email,
-            a: "Login Successful",
-            b: 2,
-          }
-        );
+        res.send({
+          _id: result[0]._id,
+          Username: result[0].Username,
+          FirstName: result[0].FirstName,
+          LastName: result[0].LastName,
+          Email: result[0].Email,
+          msg: "Login Successful",
+        });
       }
     } else {
       console.log("Email-Id Not Registered");
-      res.send({ a: "Email-Id Not Registered", b: 3 });
+      res.send({ msg: "Email-Id Not Registered" });
     }
   });
 });

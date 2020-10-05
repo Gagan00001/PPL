@@ -2,61 +2,59 @@ import React, { useState } from "react";
 import axios from "axios";
 import Input from "../../components/Input";
 import Loader from "../../components/Loader";
+import { useDispatch } from "react-redux";
+import { setLoading } from "../../Redux/Actions";
 
 const UploadPost = (props) => {
-  console.log(props);
-  const [isLoading, setIsLoading] = useState(false);
-  const [title, setTitle] = useState("");
+  const dispatch = useDispatch();
+  // const [isLoading, setIsLoading] = useState(false);
+  const [caption, setCaption] = useState("");
   const [category, setCategory] = useState("");
-  const [username, setUsername] = useState("");
   const [selectedFile, setSelectedFile] = useState();
 
   const onFileUpload = (event) => {
     event.preventDefault();
-    setIsLoading(true);
+    // setIsLoading(true);
+    var user = JSON.parse(localStorage.getItem('user'));
     const formData = new FormData();
     formData.append("myfile", selectedFile);
-    formData.append("title", title);
+    formData.append("caption", caption);
     formData.append("category", category);
-    formData.append("username", username);
+    console.log(".>>>>>>>>>>>>>>",user.Username);
+    formData.append("username",user.Username)
     console.log(selectedFile);
-    setTimeout(() => {
       axios
         .post("http://localhost:8081/uploadPost", formData)
         .then((res) => {
           console.log("updated file", res.data);
-          setTitle("");
+          setCaption("");
           setCategory("Choose ");
-          setUsername("");
           document.getElementById("myfile").value = "";
-          setIsLoading(false);
+          dispatch(setLoading(true));
           props.fetchImages();
         })
         .catch((err) => {
           console.log("uploadPost", err);
         });
-    }, 2000);
   };
 
   return (
     <div>
-      {isLoading && <Loader isLoading={isLoading} />}
       <form
         onSubmit={onFileUpload}
         className="uploadPostForm"
         encType="multipart/form-data"
       >
-        <label for="Title" value="File">
-          Title
+        <label for="Caption" value="Caption">
+          Caption
         </label>
         <Input
           onChange={(e) => {
-            setTitle(e.target.value);
+            setCaption(e.target.value);
           }}
           type="text"
-          name="title"
-          value={title}
-          placeholder="Title"
+          name="caption"
+          placeholder="Caption"
         />
         <label for="Category" value="Category">
           Category
@@ -85,10 +83,10 @@ const UploadPost = (props) => {
           value={category}
           placeholder="Category"
         /> */}
-        <label for="Username" value="Username">
+        {/* <label for="Username" value="Username">
           Username
-        </label>
-        <Input
+        </label> */}
+        {/* <Input
           onChange={(e) => {
             setUsername(e.target.value);
           }}
@@ -96,7 +94,7 @@ const UploadPost = (props) => {
           type="text"
           name="username"
           placeholder="Username"
-        />
+        /> */}
         <label for="myfile">Select a file:</label>
         <Input
           type="file"

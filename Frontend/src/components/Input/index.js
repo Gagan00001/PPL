@@ -1,5 +1,5 @@
 import React from "react";
-
+import PropTypes from "prop-types";
 const Input = ({
   type,
   id,
@@ -41,11 +41,11 @@ Input.defaultProps = {
   value: null,
 };
 
-// Input.propTypes = {
-//   message: PropTypes.string,
-//   showIcon: PropTypes.bool,
-//   closable: PropTypes.bool,
-//   type: PropTypes.string,
-// };
+Input.propTypes = {
+  message: PropTypes.string,
+  showIcon: PropTypes.bool,
+  closable: PropTypes.bool,
+  type: PropTypes.string,
+};
 
 export default Input;

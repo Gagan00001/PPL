@@ -1,10 +1,12 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import Header from "../../components/Header";
 import WelcomeToPPL from "../../components/WelcomeToPPL";
 import SignUpForm from "./component/SignUpForm/SignUpForm";
 const SignUp = () => {
   return (
     <>
+    <Header/>
       <div className="container">
         <div className="content">
           <div className="content_rgt">

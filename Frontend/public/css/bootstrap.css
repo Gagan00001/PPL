@@ -7474,6 +7474,14 @@ a.badge:focus {
   margin: 3px 8px 0px 2px;
 }
 
+.header input[type="submit"] {
+  width: 60px;
+  border: 1px solid orange;
+  color: white;
+  font-family: "Helvetica Neue";
+  font-weight: bold;
+  background: orange;
+}
 .register_sec ul li input[type="submit"],
 .uploadPostForm input[type="submit"] {
   width: 140px;

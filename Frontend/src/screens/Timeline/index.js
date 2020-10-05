@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
 import UploadImages from "./Component/UploadImages/UploadImages";
 import Categories from "./Component/Categories/Categories";
@@ -9,9 +9,15 @@ import ProfileForm from "./Component/ProfileForm/ProfileForm";
 import ProfilePic from "./Component/ProfilePic/profilePic";
 import TimelineDiv from "./Component/TimelineDiv/TimelineDiv";
 import UploadPostbtn from "./Component/UploadPostbtn/UploadPostbtn";
-import { connect } from "redux";
+import Header from "../../components/Header";
 
 const Timeline = (props) => {
+  useEffect(() => {
+    window.addEventListener("load", () => {
+      props.history.replace("/");
+    });
+  }, []);
+
   const [data, setdata] = useState([]);
   const fetchImages = (e) => {
     axios
@@ -26,15 +32,9 @@ const Timeline = (props) => {
       });
   };
 
-  // useEffect(() => {
-  //   effect
-  //   return () => {
-  //     cleanup
-  //   }
-  // }, [input])
-
   return (
     <>
+      <Header logout={true} />
       <div className="container">
         <div className="content">
           <div className="content_rgt">
